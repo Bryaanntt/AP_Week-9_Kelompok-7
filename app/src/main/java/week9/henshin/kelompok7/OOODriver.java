@@ -25,10 +25,10 @@ public class OOODriver {
     public void tiltBelt() {
         if (beltTilted == false) {
             beltTilted = true;
-            System.out.println("Belt Tilted!");
+            System.out.println("Belt di tilt!");
         } else {
             beltTilted = false;
-            System.out.println("Belt Untilted!");
+            System.out.println("Belt di tilt ke posisi semula!");
         }
     }
 

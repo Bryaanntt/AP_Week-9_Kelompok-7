@@ -40,22 +40,21 @@ public class Main {
         OOODriver belt = new OOODriver();
         ComboCatalogue catalogue = new ComboCatalogue();
         TransformationEngine engine = new TransformationEngine(catalogue);
-        
         while (true) {
             try {
 
-                System.out.println("\n=== AVAILABLE MEDALS ===");
+                System.out.println("\n=== MEDAL YANG TERSEDIA ===");
                 printMedals(repo.getAll());
 
                 belt.displayStatus();
 
                 System.out.println("\n=== MENU ===");
-                System.out.println("1. Insert Medal");
+                System.out.println("1. Masukkan Medal");
                 System.out.println("2. Tilt Belt");
                 System.out.println("3. Scan");
-                System.out.println("4. Remove Medal");
-                System.out.println("5. Exit");
-                System.out.print("Choose: ");
+                System.out.println("4. Keluarkan Medal");
+                System.out.println("5. Keluar");
+                System.out.print("Pilihan: ");
 
                 int c = input.nextInt();
                 input.nextLine();
@@ -90,36 +89,51 @@ public class Main {
                         
                     case 3:
                         if (!belt.isBeltTilted()) {
-                            System.out.println("Belt is not tilted!");
+                            System.out.println("Belt belum di tilt!");
                             break;
                         }
 
                         System.out.println("\nScanning...");
-                        Thread.sleep(500);
+                        Thread.sleep(2000);
                         System.out.println(engine.scan(belt));
                         System.out.println("HENSHINNN!!!");
                         break;
 
                     case 4:
-                        System.out.println("1. Remove HEAD");
-                        System.out.println("2. Remove ARMS");
-                        System.out.println("3. Remove LEGS");
-                        System.out.println("4. Remove ALL");
-                        System.out.print("Choose: ");
+                        if (belt.isBeltTilted()) {
+                            System.out.println("Tidak dapat mengeluarkan medal saat belt sedang di tilt!");
+                            break;
+                        }
+                        System.out.println("1. Mengeluarkan HEAD");
+                        System.out.println("2. Mengeluarkan ARMS");
+                        System.out.println("3. Mengeluarkan LEGS");
+                        System.out.println("4. Mengeluarkan ALL");
+                        System.out.print("Pilihan: ");
                         int r = input.nextInt();
+                        //if (r < 1 || r > 4 || !input.hasNextInt()) {
+                        //    System.out.println("Pilihan tidak valid!");
+                        //    break;
+                        //} else if (belt.getHead() == null && r == 1 || belt.getArms() == null && r == 2 || belt.getLegs() == null && r == 3) {
+                        //    System.out.println("Slot sudah kosong!");
+                        //    break;
+                        //}
                         belt.reset(r);
                         break;
-
                     case 5:
+                        input.close();
+                        System.out.println("\nMematikan program...");
+                        Thread.sleep(2000);
                         System.exit(0);
-                }
 
+                    default:
+                        System.out.println("Pilihan tidak valid!");
+                        break;
+                }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
-        }
+        } 
     }
-
     // Chekker
     private static void insertMedals(Scanner input, MedalRepository<CoreMedal> repo, OOODriver belt) {
         
@@ -131,7 +145,7 @@ public class Main {
     
         CoreMedal h = find(repo.getAll(), headInput, CoreMedal.Slot.HEAD);
         if (h == null) {
-            System.out.println("Wrong HEAD!");
+            System.out.println("Medal HEAD Salah!");
             return;
         }
         belt.insert(h);
@@ -142,7 +156,7 @@ public class Main {
     
         CoreMedal a = find(repo.getAll(), armsInput, CoreMedal.Slot.ARMS);
         if (a == null) {
-            System.out.println("Wrong ARMS!");
+            System.out.println("Medal ARMS Salah!");
             return;
         }
         belt.insert(a);
@@ -153,7 +167,7 @@ public class Main {
     
         CoreMedal l = find(repo.getAll(), legsInput, CoreMedal.Slot.LEGS);
         if (l == null) {
-            System.out.println("Wrong LEGS!");
+            System.out.println("Medal LEGS Salah!");
             return;
         }
         belt.insert(l);
