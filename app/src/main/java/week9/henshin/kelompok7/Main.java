@@ -126,13 +126,13 @@ public class Main {
                         System.out.println("\nMematikan program...");
                         Thread.sleep(2000);
                         System.exit(0);
-
                     default:
                         System.out.println("Pilihan tidak valid!");
                         break;
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
+                System.exit(0);
             }
         } 
     }
