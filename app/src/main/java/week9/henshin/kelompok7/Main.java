@@ -62,6 +62,10 @@ public class Main {
                 switch (c) {
 
                     case 1:
+                        if (belt.isBeltTilted()) {
+                            System.out.println("Tidak dapat memasukkan medal saat belt sedang di tilt!");
+                            break;
+                        }
                         System.out.print("Masukkan nama medal: ");
                         String inputName = input.nextLine();
 
