@@ -114,13 +114,11 @@ public class Main {
                         System.out.println("4. Mengeluarkan ALL");
                         System.out.print("Pilihan: ");
                         int r = input.nextInt();
-                        //if (r < 1 || r > 4 || !input.hasNextInt()) {
-                        //    System.out.println("Pilihan tidak valid!");
-                        //    break;
-                        //} else if (belt.getHead() == null && r == 1 || belt.getArms() == null && r == 2 || belt.getLegs() == null && r == 3) {
-                        //    System.out.println("Slot sudah kosong!");
-                        //    break;
-                        //}
+                        input.nextLine();
+                        if (belt.getHead() == null && r == 1 || belt.getArms() == null && r == 2 || belt.getLegs() == null && r == 3) {
+                            System.out.println("Slot sudah kosong!");
+                            break;
+                        }
                         belt.reset(r);
                         break;
                     case 5:
