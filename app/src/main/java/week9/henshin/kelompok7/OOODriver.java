@@ -3,7 +3,7 @@ package week9.henshin.kelompok7;
 public class OOODriver {
 
     private CoreMedal head, arms, legs;
-    public boolean beltTilted = false;
+    private boolean beltTilted = false;
 
     public void insert(CoreMedal medal) throws Exception {
         switch (medal.getSlot()) {

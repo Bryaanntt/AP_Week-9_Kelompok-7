@@ -126,66 +126,15 @@ public class Main {
                         System.out.println("\nMematikan program...");
                         Thread.sleep(2000);
                         System.exit(0);
-
                     default:
                         System.out.println("Pilihan tidak valid!");
                         break;
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
+                System.exit(0);
             }
         } 
-    }
-    // Chekker
-    private static void insertMedals(Scanner input, MedalRepository<CoreMedal> repo, OOODriver belt) {
-        
-    try {
-        
-        // HEAD
-        System.out.print("HEAD: ");
-        String headInput = input.nextLine();
-    
-        CoreMedal h = find(repo.getAll(), headInput, CoreMedal.Slot.HEAD);
-        if (h == null) {
-            System.out.println("Medal HEAD Salah!");
-            return;
-        }
-        belt.insert(h);
-
-        // ARMS
-        System.out.print("ARMS: ");
-        String armsInput = input.nextLine();
-    
-        CoreMedal a = find(repo.getAll(), armsInput, CoreMedal.Slot.ARMS);
-        if (a == null) {
-            System.out.println("Medal ARMS Salah!");
-            return;
-        }
-        belt.insert(a);
-
-        // LEGS 
-        System.out.print("LEGS: ");
-        String legsInput = input.nextLine();
-    
-        CoreMedal l = find(repo.getAll(), legsInput, CoreMedal.Slot.LEGS);
-        if (l == null) {
-            System.out.println("Medal LEGS Salah!");
-            return;
-        }
-        belt.insert(l);
-    
-        System.out.println("Semua medal berhasil dimasukkan!");
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-    private static CoreMedal find(List<CoreMedal> list, String name, CoreMedal.Slot slot) {
-        for (CoreMedal m : list) {
-            if (m.getName().equalsIgnoreCase(name) && m.getSlot() == slot) {
-                return m;
-            }
-        }
-        return null;
     }
     private static void printMedals(List<CoreMedal> list) {
 
