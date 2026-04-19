@@ -3,13 +3,16 @@ Nama Anggota Kelompok:
 
 Andra Ilham Triadi Mijaya 
 2086022510016 
-IMT - AI                     
+IMT - AI 
+
 Bryant 
 2086022510003
 IMT - FSD 
+
 Christian Farrel Tanmel 
 2086022510011 
 IMT - FSD
+
 Richardo Wilsen Mathana Radha 
 2086022510035
 IMT - FSD
